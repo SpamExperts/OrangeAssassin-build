@@ -1,0 +1,14 @@
+[Unit]
+Description=Open Source Antispam Email Filtering Framework
+
+[Service]
+Type=forking
+ExecStart=/opt/venvs/orangeassassin/bin/oad.py -d -r /var/run/oad.pid --prefork 4 -C /usr/share/orangeassassin -S /etc/orangeassassin
+ExecStop=/opt/venvs/orangeassassin/bin/oad.py -r /var/run/oad.pid stop
+ExecReload=/opt/venvs/orangeassassin/bin/oad.py -r /var/run/oad.pid reload
+PIDFile=/var/run/oad.pid
+KillMode=mixed
+
+
+[Install]
+WantedBy=multi-user.target

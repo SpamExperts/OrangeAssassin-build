@@ -33,9 +33,9 @@ if ('$Id: sa-update.raw 1475932 2013-04-25 19:56:34Z mmartinec $' =~ ':') {
 }
 
 my $PREFIX          = '/usr';             # substituted at 'make' time
-my $DEF_RULES_DIR   = '/usr/share/spampad';      # substituted at 'make' time
-my $LOCAL_RULES_DIR = '/etc/spampad';    # substituted at 'make' time
-my $LOCAL_STATE_DIR = '/var/lib/spampad';    # substituted at 'make' time
+my $DEF_RULES_DIR   = '/usr/share/orangeassassin';      # substituted at 'make' time
+my $LOCAL_RULES_DIR = '/etc/orangeassassin';    # substituted at 'make' time
+my $LOCAL_STATE_DIR = '/var/lib/orangeassassin';    # substituted at 'make' time
 use lib '/usr/local/lib/site_perl';                   # substituted at 'make' time
 
 # We want to do a small amount of macro processing during channel installs,
@@ -44,9 +44,9 @@ my %MACRO_VALUES = (
 	'VERSION'		=> '3.004000',
 	'CONTACT_ADDRESS'	=> 'the administrator of that system',
 	'PREFIX'		=> '/usr',
-	'DEF_RULES_DIR'		=> '/usr/share/spampad',
-	'LOCAL_RULES_DIR'	=> '/etc/spampad',
-	'LOCAL_STATE_DIR'	=> '/var/lib/spampad',
+	'DEF_RULES_DIR'		=> '/usr/share/orangeassassin',
+	'LOCAL_RULES_DIR'	=> '/etc/orangeassassin',
+	'LOCAL_STATE_DIR'	=> '/var/lib/orangeassassin',
 	'INSTALLSITELIB'	=> '/usr/local/lib/site_perl',
 );
 
