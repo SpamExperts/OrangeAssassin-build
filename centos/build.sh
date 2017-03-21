@@ -1,6 +1,12 @@
 #!/bin/bash
+#
+# SpamExperts OrangeAssassin CentOS package building script for Python 2
+# Usage:
+#   ./build.sh
 
 set -e
+
+PYTHON_BIN=/usr/bin/python
 
 # Install fpm - helper tool to build virtualenv package into RPM
 yum -y install ruby-devel gcc make rpm-build
@@ -17,7 +23,7 @@ sed -i OrangeAssassin/setup.py -e '/tests_require=test_requirements/d'
 
 # Build Python virtualenv into RPM package
 fpm --force --debug -n orangeassassin-python2 -s virtualenv --virtualenv-install-location /opt/ -t rpm --virtualenv-system-site-packages \
- --python-bin /usr/bin/python2.7 --no-virtualenv-fix-name --no-python-fix-name \
+ --python-bin $PYTHON_BIN --no-virtualenv-fix-name --no-python-fix-name \
  --after-install postinst --before-remove preuninst --architecture x86_64 --maintainer "SpamExperts B.V. <support@spamexperts.com>" \
  --url "https://github.com/SpamExperts/OrangeAssassin" --description "An open-source drop-in replacement for SpamAssassin." \
  --license GPLv2 --vendor "SpamExperts B.V." --rpm-auto-add-directories --depends python --replaces spamassassin \
