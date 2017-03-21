@@ -1,0 +1,5 @@
+#!/bin/bash
+
+/usr/bin/systemctl daemon-reload
+/usr/bin/systemctl start orangeassassin
+echo 'SAUPDATE=yes' >>/etc/sysconfig/sa-update
