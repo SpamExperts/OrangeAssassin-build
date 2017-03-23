@@ -25,10 +25,11 @@ then
         sed -i 's/3\.4/3\.5/g' debian/control
     else
         sed -i 's/3\.5/3\.4/g' debian/control
+    fi
 fi
 
 #Build the deb package
 dpkg-buildpackage -us -uc                   #remove test require from setup.py
 cd python$PYTHON_MAJV
-rm doc/ oa/ requirements/ scripts/ tests/ -r
+rm docs/ oa/ requirements/ scripts/ tests/ -r
 
