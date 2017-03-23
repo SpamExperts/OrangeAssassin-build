@@ -30,6 +30,5 @@ fi
 
 #Build the deb package
 dpkg-buildpackage -us -uc                   #remove test require from setup.py
-cd python$PYTHON_MAJV
 rm docs/ oa/ requirements/ scripts/ tests/ -r
 
