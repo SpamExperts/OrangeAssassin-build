@@ -9,4 +9,5 @@ Package: orangeassassin
 Architecture: any
 Pre-Depends: dpkg (>= 1.16.1), python2.7, ${misc:Pre-Depends}
 Depends: ${python:Depends}, ${misc:Depends}, libnetaddr-ip-perl, libhttp-date-perl, libhtml-parser-perl
+Conflicts: spamassassin
 Description: SpamPAD is an open-source drop-in replacement for SpamAssassin.
