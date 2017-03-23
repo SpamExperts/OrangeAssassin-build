@@ -1,0 +1,5 @@
+#!/bin/bash
+
+rm -f /lib/systemd/system/orangeassassin.service
+/usr/bin/systemctl daemon-reload
+
