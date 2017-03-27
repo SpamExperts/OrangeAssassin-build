@@ -14,8 +14,8 @@ elif test -x "$CHKCONFIG"; then
     cp /opt/OrangeAssassin/$NAME-init.d /etc/init.d/$NAME
     chmod 755 /etc/init.d/$NAME
     $CHKCONFIG --level 2345 $NAME on
+    test -x "$SERVICE" && $SERVICE $NAME start
 else
     echo "Warning: Unable to activate service orangeassassin as neither systemctl or chkconfig executables found."
 fi
 echo 'SAUPDATE=yes' >>/etc/sysconfig/sa-update
-test -x "$SERVICE" && $SERVICE $NAME start
