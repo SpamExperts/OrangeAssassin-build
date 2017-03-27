@@ -1,5 +1,14 @@
 #!/bin/bash
 
+NAME=orangeassassin
+
+if test -x /usr/bin/systemctl; then
+    /usr/bin/systemctl stop $NAME
+elif test -x /usr/sbin/service; then
+    /usr/sbin/service $name stop
+else
+    echo "Unable to stop the service as no systemctl or init.d control script found."
+fi
+rm -f /etc/init.d/orangeassassin
 rm -f /lib/systemd/system/orangeassassin.service
 /usr/bin/systemctl daemon-reload
-
