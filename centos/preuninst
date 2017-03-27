@@ -1,14 +1,21 @@
 #!/bin/bash
 
 NAME=orangeassassin
+SERVICE="`which service`"
+CHKCONFIG="`which chkconfig`"
+SYSTEMCTL="`which systemctl`"
 
-if test -x /usr/bin/systemctl; then
-    /usr/bin/systemctl stop $NAME
-elif test -x /usr/sbin/service; then
-    /usr/sbin/service $name stop
+if test -x "$SYSTEMCTL"; then
+    $SYSTEMCTL stop $NAME
+elif test -x "$SERVICE"; then
+    $SERVICE $NAME stop
+    if test -x "$CHKCONFIG"; then
+        $CHKCONFIG --level 2345 $NAME off
+        $CHKCONFIG --del $NAME
+    fi
 else
     echo "Unable to stop the service as no systemctl or init.d control script found."
 fi
-rm -f /etc/init.d/orangeassassin
-rm -f /lib/systemd/system/orangeassassin.service
-/usr/bin/systemctl daemon-reload
+rm -f /etc/init.d/$NAME
+rm -f /lib/systemd/system/$NAME.service
+test -x "$SYSTEMCTL" && $SYSTEMCTL daemon-reload
