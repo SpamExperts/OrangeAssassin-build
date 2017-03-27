@@ -9,7 +9,7 @@ set -e
 PYTHON_BIN=/usr/bin/python
 
 # Install fpm - helper tool to build virtualenv package into RPM
-yum -y install ruby-devel gcc make rpm-build
+yum -y install ruby-devel rubygems gcc make rpm-build
 gem install --no-ri --no-rdoc fpm
 
 # Install package building requirements
