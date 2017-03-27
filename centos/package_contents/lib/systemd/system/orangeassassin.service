@@ -3,8 +3,8 @@ Description=Open-source drop-in replacement for SpamAssassin.
 
 [Service]
 Type=simple
-PIDFile=/var/run/padd.pid
-ExecStart=/opt/OrangeAssassin/bin/oad.py -d -r /var/run/padd.pid --prefork 4 -C /usr/share/spamassassin -S /etc/mail/spamassassin
+PIDFile=/var/run/oad.pid
+ExecStart=/opt/OrangeAssassin/bin/oad.py -d -r /var/run/oad.pid --prefork 4 -C /usr/share/spamassassin -S /etc/mail/spamassassin
 
 [Install]
 WantedBy=multi-user.target
