@@ -4,7 +4,7 @@ if test -e /usr/bin/systemctl; then
     /usr/bin/systemctl daemon-reload
     /usr/bin/systemctl enable orangeassassin
     /usr/bin/systemctl start orangeassassin
-elif test -e /usr/sbin/chkconfig
+elif test -e /usr/sbin/chkconfig; then
     /usr/sbin/chkconfig --level 2345 orangeassassin on
 else
     echo "Warning: Unable to activate service orangeassassin as neither systemctl or chkconfig executables found."
