@@ -1,14 +1,17 @@
 #!/bin/bash
 
-if test -e /usr/bin/systemctl; then
+SYSTEMCTL="`which systemctl`"
+CHKCONFIG="`which chkconfig`"
+
+if test -x $SYSTEMCTL; then
     cp /opt/OrangeAssassin/orangeassassin.service /lib/systemd/system/
-    /usr/bin/systemctl daemon-reload
-    /usr/bin/systemctl enable orangeassassin
-    /usr/bin/systemctl start orangeassassin
-elif test -e /usr/sbin/chkconfig; then
+    $SYSTEMCTL daemon-reload
+    $SYSTEMCTL enable orangeassassin
+    $SYSTEMCTL start orangeassassin
+elif test -x $CHKCONFIG; then
     cp /opt/OrangeAssassin/orangeassassin-init.d /etc/init.d/orangeassassin
     chmod 755 /etc/init.d/orangeassassin
-    /usr/sbin/chkconfig --level 2345 orangeassassin on
+    $CHKCONFIG --level 2345 orangeassassin on
 else
     echo "Warning: Unable to activate service orangeassassin as neither systemctl or chkconfig executables found."
 fi
