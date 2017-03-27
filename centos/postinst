@@ -6,12 +6,14 @@ CHKCONFIG="`which chkconfig`"
 SERVICE="`which service`"
 
 if test -x "$SYSTEMCTL"; then
-    cp /opt/OrangeAssassin/$NAME.service /lib/systemd/system/
+    echo "Installing systemd startup script"
+    cp -f /opt/OrangeAssassin/$NAME.service /lib/systemd/system/
     $SYSTEMCTL daemon-reload
     $SYSTEMCTL enable $NAME
     $SYSTEMCTL start $NAME
 elif test -x "$CHKCONFIG"; then
-    cp /opt/OrangeAssassin/$NAME-init.d /etc/init.d/$NAME
+    echo "Installing init.d startup script"
+    cp -f /opt/OrangeAssassin/$NAME-init.d /etc/init.d/$NAME
     chmod 755 /etc/init.d/$NAME
     $CHKCONFIG --level 2345 $NAME on
     test -x "$SERVICE" && $SERVICE $NAME start
