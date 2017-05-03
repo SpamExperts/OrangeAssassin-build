@@ -13,3 +13,6 @@ override_dh_strip_nondeterminism:
 
 override_dh_strip:
 	dh_strip --no-automatic-dbgsym --exclude=PIL --exclude=imagingcms
+
+override_dh_shlibdeps:
+	# disable dh_shlibdeps
