@@ -12,4 +12,4 @@ override_dh_strip_nondeterminism:
 	# Disable dh_strip_nondeterminism
 
 override_dh_strip:
-	dh_strip --no-automatic-dbgsym
+	dh_strip --no-automatic-dbgsym --exclude=PIL --exclude=imagingcms
